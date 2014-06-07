@@ -15,66 +15,116 @@ import org.drools.runtime.StatefulKnowledgeSession;
 /**
  * This is a sample class to launch a rule.
  */
-public class DroolsTest {
+public final class DroolsTest {
 
-	public static final void main(String[] args) {
-		try {
-			// load up the knowledge base
-			KnowledgeBase kbase = readKnowledgeBase();
-			StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
-			KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "test");
-			// go !
-			Message message = new Message();
-			message.setMessage("Hello World");
-			message.setStatus(Message.HELLO);
-			ksession.insert(message);
-			ksession.fireAllRules();
-			logger.close();
-		} catch (Throwable t) {
-			t.printStackTrace();
-		}
-	}
+    /**
+     * private.
+     */
+    private DroolsTest() {
+        super();
+    }
 
-	private static KnowledgeBase readKnowledgeBase() throws Exception {
-		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-		kbuilder.add(ResourceFactory.newClassPathResource("Sample.drl"), ResourceType.DRL);
-		KnowledgeBuilderErrors errors = kbuilder.getErrors();
-		if (errors.size() > 0) {
-			for (KnowledgeBuilderError error: errors) {
-				System.err.println(error);
-			}
-			throw new IllegalArgumentException("Could not parse knowledge.");
-		}
-		KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
-		kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
-		return kbase;
-	}
+    /**
+     * blah.
+     * @param args param
+     */
+    public static void main(final String[] args) {
+        try {
+            // load up the knowledge base
+            KnowledgeBase kbase = readKnowledgeBase();
+            StatefulKnowledgeSession ksession =
+                    kbase.newStatefulKnowledgeSession();
+            KnowledgeRuntimeLogger logger =
+                 KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "test");
+            // go !
+            Message message = new Message();
+            message.setMessage("Hello World");
+            message.setStatus(Message.HELLO);
+            ksession.insert(message);
+            ksession.fireAllRules();
+            logger.close();
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
 
-	public static class Message {
-		
-		public static final int HELLO = 0;
-		public static final int GOODBYE = 1;
+    /**
+     * blah.
+     * @return val
+     * @throws Exception thrown
+     */
+    private static KnowledgeBase readKnowledgeBase() throws Exception {
+        KnowledgeBuilder kbuilder =
+                KnowledgeBuilderFactory.newKnowledgeBuilder();
+        kbuilder.add(ResourceFactory.newClassPathResource(
+                            "Sample.drl"), ResourceType.DRL);
+        KnowledgeBuilderErrors errors = kbuilder.getErrors();
+        if (errors.size() > 0) {
+            for (KnowledgeBuilderError error: errors) {
+                System.err.println(error);
+            }
+            throw new IllegalArgumentException("Could not parse knowledge.");
+        }
+        KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
+        kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
+        return kbase;
+    }
 
-		private String message;
+    /**
+     * blah.
+     * @author Barnaby Golden
+     *
+     */
+    public static class Message {
 
-		private int status;
+        /**
+         * blah.
+         */
+        public static final int HELLO = 0;
+        /**
+         * blah.
+         */
+        public static final int GOODBYE = 1;
+        /**
+         * blah.
+         */
+        private String message;
+        /**
+         * blah.
+         */
+        private int status;
 
-		public String getMessage() {
-			return this.message;
-		}
+        /**
+         * blah.
+         * @return val
+         */
+        public final String getMessage() {
+            return this.message;
+        }
 
-		public void setMessage(String message) {
-			this.message = message;
-		}
+        /**
+         * blah.
+         * @param message param
+         */
+        public final void setMessage(final String message) {
+            this.message = message;
+        }
 
-		public int getStatus() {
-			return this.status;
-		}
+        /**
+         * blah.
+         * @return val
+         */
+        public final int getStatus() {
+            return this.status;
+        }
 
-		public void setStatus(int status) {
-			this.status = status;
-		}
-		
-	}
+        /**
+         * blah.
+         * @param status param
+         */
+        public final void setStatus(final int status) {
+            this.status = status;
+        }
 
+    }
 }
