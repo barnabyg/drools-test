@@ -17,6 +17,14 @@
     <maven>3.0.1</maven>
   </prerequisites>
 
+  <repositories>
+    <repository>
+      <id>jboss</id>
+      <name>jboss</name>
+      <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+    </repository>
+  </repositories>
+
   <build>
 
     <resources>
@@ -151,14 +159,6 @@
       </plugin>
     </plugins>
   </reporting>
-
-  <repositories>
-    <repository>
-      <id>jboss</id>
-      <name>jboss</name>
-      <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-    </repository>
-  </repositories>
 
   <dependencies>
     <dependency>
