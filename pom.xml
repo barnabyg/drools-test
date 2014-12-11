@@ -105,7 +105,7 @@
         </dependencies>  
         <configuration>
           <check>
-            <haltOnFailure>true</haltOnFailure>
+            <haltOnFailure>false</haltOnFailure>
             <branchRate>45</branchRate>
             <lineRate>50</lineRate>
             <totalBranchRate>45</totalBranchRate>
